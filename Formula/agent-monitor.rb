@@ -28,6 +28,6 @@ class AgentMonitor < Formula
   test do
     ENV["HOME"] = testpath
     system "#{bin}/agentmon-report", "install-hooks"
-    assert_predicate testpath/".claude/settings.json", :exist?
+    assert_path_exists testpath/".claude/settings.json"
   end
 end
