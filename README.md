@@ -8,3 +8,9 @@ Homebrew tap for [agent-monitor](https://github.com/beet/agent-monitor): `agentd
 brew tap beet/agent-monitor
 brew install agent-monitor
 ```
+
+If Homebrew refuses to load the formula with "untrusted tap", trust it first:
+
+```
+brew trust beet/agent-monitor
+```
