@@ -1,8 +1,8 @@
 class AgentMonitor < Formula
   desc "TUI and daemon for monitoring Claude Code agent sessions"
   homepage "https://github.com/beet/agent-monitor"
-  url "https://github.com/beet/agent-monitor/archive/refs/tags/v0.4.3.tar.gz"
-  sha256 "6d856f27de2c8ba54a75cc01da42b07dcec47f4107c36d23b15570e7071f8115"
+  url "https://github.com/beet/agent-monitor/archive/refs/tags/v0.5.0.tar.gz"
+  sha256 "7e419512958993982520ddca8befac36d5c4f08736cfc7262cee973f77cabcd1"
   head "https://github.com/beet/agent-monitor.git", branch: "main"
 
   depends_on "rust" => :build
@@ -11,6 +11,7 @@ class AgentMonitor < Formula
     system "cargo", "install", *std_cargo_args(path: "crates/agentd")
     system "cargo", "install", *std_cargo_args(path: "crates/agentmon")
     system "cargo", "install", *std_cargo_args(path: "crates/agentmon-report")
+    (share/"agent-monitor").install "rspec-formatter/rspec_formatter.rb"
   end
 
   service do
@@ -32,6 +33,9 @@ class AgentMonitor < Formula
              brew services start agent-monitor
 
       Then run `agentmon` to view tracked agent sessions.
+
+      Optional: to report RSpec test-run status in a Ruby project, run
+      `agentmon init-rspec` in that project's root directory.
     EOS
   end
 
@@ -39,5 +43,6 @@ class AgentMonitor < Formula
     ENV["HOME"] = testpath
     system "#{bin}/agentmon-report", "install-hooks"
     assert_path_exists testpath/".claude/settings.json"
+    assert_path_exists share/"agent-monitor/rspec_formatter.rb"
   end
 end
