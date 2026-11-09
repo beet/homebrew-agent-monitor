@@ -1,8 +1,8 @@
 class AgentMonitor < Formula
   desc "TUI and daemon for monitoring Claude Code agent sessions"
   homepage "https://github.com/beet/agent-monitor"
-  url "https://github.com/beet/agent-monitor/archive/refs/tags/v0.17.1.tar.gz"
-  sha256 "2fa3ce5b003bf07ad768b75d86a596102b5b3f834f34006300d2678d2dbeb3fe"
+  url "https://github.com/beet/agent-monitor/archive/refs/tags/v0.17.2.tar.gz"
+  sha256 "cf998e2e1dc5cf219eb50e2f8fb1da87093e515d1be44c4b7e02d694483f0858"
   head "https://github.com/beet/agent-monitor.git", branch: "main"
 
   depends_on "rust" => :build
